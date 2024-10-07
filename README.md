@@ -4,8 +4,8 @@ _Python fundamental type extension_\
 _Python 基础类型扩展_
 
 Implement types not provided by the standard library, such as static classes,
-singleton classes, and atomic counters.\
-实现标准库未提供的类型，例如静态类、单例类和原子计数器。
+singleton classes, multiton classes, and atomic counters.\
+实现标准库未提供的类型，例如静态类、单例类、多例类、和原子计数器。
 
 The preferred way to install typex is via pip.\
 安装 typex 的首选方法是通过 pip。
