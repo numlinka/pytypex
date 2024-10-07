@@ -137,14 +137,30 @@ class Atomic (object):
     """
     Atomic counter.
     """
+    def __init__(self, max_value: int = -1):
+        """
+        Initialize the atomic counter.
 
-    def __init__(self):
+        Arguments:
+            max_value (int): The maximum value of the counter, when exceeded, the count starts again, -1 means no limit.
+        """
         self.__lock = RLock()
         self.__count = -1
+        self._set_max_value(max_value)
+
+    def _set_max_value(self, max_value: int):
+        with self.__lock:
+            if not isinstance(max_value, int):
+                raise TypeError("Argument max_value must be an integer.")
+            if max_value < -1 or max_value == 0:
+                raise ValueError(f"Invalid max_value: {max_value}")
+            self.__max_value = max_value
 
     def get_count(self) -> int:
         with self.__lock:
             self.__count += 1
+            if self.__max_value != -1 and self.__count >= self.__max_value:
+                self.__count = 0
             return self.__count
 
     @property
