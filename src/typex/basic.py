@@ -16,17 +16,8 @@ else:
     from typing import TypeVar
     Self = TypeVar("Self")
 
-
-__name__ = "typex"
-__author__ = "numlinka"
-__license__ = "MIT"
-__copyright__ = "Copyright (C) 2022 numlinka"
-
-__version_info__ = (0, 2, 1)
-__version__ = ".".join(map(str, __version_info__))
-
-
-DEFAULT = "default"
+# internal
+from .constants import *
 
 
 class Static (object):
@@ -137,7 +128,7 @@ class Atomic (object):
     """
     Atomic counter.
     """
-    def __init__(self, max_value: int = -1):
+    def __init__(self, max_value: int = -1) -> None:
         """
         Initialize the atomic counter.
 
@@ -148,7 +139,7 @@ class Atomic (object):
         self.__count = -1
         self._set_max_value(max_value)
 
-    def _set_max_value(self, max_value: int):
+    def _set_max_value(self, max_value: int) -> None:
         with self.__lock:
             if not isinstance(max_value, int):
                 raise TypeError("Argument max_value must be an integer.")

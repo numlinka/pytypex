@@ -8,7 +8,7 @@ from setuptools import setup
 
 setup(
     name="typex",
-    version="0.2.1",
+    version="0.3.0",
     description="Python fundamental type extension.",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
@@ -16,7 +16,7 @@ setup(
     author_email="numlinka@163.com",
     url="https://github.com/numlinka/pytypex",
     package_dir={"": "src"},
-    py_modules=["typex"],
+    packages=["typex"],
     python_requires=">=3.8",
     classifiers=[
         "License :: OSI Approved :: MIT License",
