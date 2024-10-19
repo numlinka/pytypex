@@ -14,7 +14,7 @@ The preferred way to install typex is via pip.\
 pip install typex
 ```
 
-To upgrade logop to the latest version, use the following command.\
+To upgrade typex to the latest version, use the following command.\
 要将 typex 升级到最新版本，请使用以下命令。
 
 ```shell
