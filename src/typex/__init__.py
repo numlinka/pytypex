@@ -1,6 +1,12 @@
 # Licensed under the MIT License.
 # pytypex Copyright (C) 2022 numlinka.
 
+"""
+Standard Type Extensions
+
+Provides some type extensions that the standard library does not meet.
+"""
+
 # internal
 from . import constants
 from .basic import *

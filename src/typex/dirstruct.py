@@ -4,7 +4,7 @@
 # std
 import os
 import inspect
-from typing import Union, Any
+from typing import Union, Optional, Any
 
 
 class FilePath (str):
@@ -28,9 +28,9 @@ class Directory (DirectoryPath):
     # 计算目标路径时包括自身.
     _include_ = True
 
-    # own original value, You can assign a value to this property when you are too lazy to instantiate the class.
+    # Own original value, You can assign a value to this property when you are too lazy to instantiate the class.
     # 自身原始值, 当你懒得实例化这个类时可以为这个属性赋值.
-    _value_ = None
+    _value_: Optional[str] = None
 
     # Whether to create the directory when the directory is not found.
     # 未找到目录时是否创建该目录.

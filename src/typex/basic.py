@@ -6,18 +6,18 @@ import sys
 
 from abc import ABC, abstractmethod
 from types import MethodType
-from typing import Dict, Any
+from typing import Dict, Any, TypeVar
 from threading import RLock
+
+# internal
+from .constants import *
+
 
 if sys.version_info >= (3, 11):
     from typing import Self
 
 else:
-    from typing import TypeVar
     Self = TypeVar("Self")
-
-# internal
-from .constants import *
 
 
 class Static (object):
@@ -167,7 +167,7 @@ class AbsoluteAtomic (Singleton, Atomic):
     """
     Absolute atomic counter.
 
-    This is a singleton class, which means there will be only one instance of this class and it will share the counter.
+    This is a singleton class, which means there will be only one instance of this class, and it will share the counter.
     """
     __init__ = Atomic.__init__
 
