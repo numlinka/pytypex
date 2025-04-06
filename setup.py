@@ -8,7 +8,7 @@ from setuptools import setup
 
 setup(
     name="typex",
-    version="0.3.0",
+    version="0.3.1",
     description="Python fundamental type extension.",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",

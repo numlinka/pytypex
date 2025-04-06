@@ -18,7 +18,7 @@ __author__ = "numlinka"
 __license__ = "MIT"
 __copyright__ = "Copyright (C) 2022 numlinka"
 
-__version_info__ = (0, 3, 0)
+__version_info__ = (0, 3, 1)
 __version__ = ".".join(map(str, __version_info__))
 
 
