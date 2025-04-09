@@ -1,6 +1,11 @@
 # Licensed under the MIT License.
 # pytypex Copyright (C) 2022 numlinka.
 
+__all__ = [
+    "mutex",
+    "once"
+]
+
 # std
 import threading
 from typing import Callable
@@ -33,9 +38,3 @@ def once(func):
             return func(*args, **kwargs)
 
     return wrapper
-
-
-__all__ = [
-    "mutex",
-    "once"
-]

@@ -1,6 +1,17 @@
 # Licensed under the MIT License.
 # pytypex Copyright (C) 2022 numlinka.
 
+__all__ = [
+    "Static",
+    "Abstract",
+    "abstractmethod",
+    "Singleton",
+    "Multiton",
+    "Atomic",
+    "AbsoluteAtomic",
+    "MultitonAtomic"
+]
+
 # std
 import sys
 
@@ -179,15 +190,3 @@ class MultitonAtomic (Multiton, Atomic):
     This is a multiton class, which means that each instance of this class will have its own counter.
     """
     __init__ = Atomic.__init__
-
-
-__all__ = [
-    "Static",
-    "Abstract",
-    "abstractmethod",
-    "Singleton",
-    "Multiton",
-    "Atomic",
-    "AbsoluteAtomic",
-    "MultitonAtomic"
-]

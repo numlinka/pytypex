@@ -1,6 +1,14 @@
 # Licensed under the MIT License.
 # pytypex Copyright (C) 2022 numlinka.
 
+__all__ = [
+    "FilePath",
+    "DirectoryPath",
+    "FinalFilePath",
+    "FinalDirectoryPath",
+    "Directory"
+]
+
 # std
 import os
 import inspect
@@ -104,12 +112,3 @@ class Directory (DirectoryPath):
                 ...
 
         return result
-
-
-__all__ = [
-    "FilePath",
-    "DirectoryPath",
-    "FinalFilePath",
-    "FinalDirectoryPath",
-    "Directory"
-]
