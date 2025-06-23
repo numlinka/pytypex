@@ -16,8 +16,8 @@ __all__ = [
 import sys
 
 from abc import ABC, abstractmethod
-from types import MethodType
-from typing import Dict, Any, TypeVar
+from types import MethodType, FunctionType
+from typing import Dict, Any, TypeVar, Union
 from threading import RLock
 
 # internal
@@ -28,7 +28,7 @@ if sys.version_info >= (3, 11):
     from typing import Self
 
 else:
-    Self = TypeVar("Self")
+    Self = object
 
 
 class Static (object):
@@ -57,10 +57,10 @@ class Singleton (object):
     The `__init__` method of the subclass will be replaced to ensure that the method is only executed once.
     """
     _singleton_instance: Self  # <-- cls
-    _singleton_init_method: MethodType  # <-- cls
+    _singleton_init_method: Union[MethodType, FunctionType]  # <-- cls
     _singleton_initialized: bool  # <-- cls
 
-    def __new__(cls, *args, **kwargs) -> Self:
+    def __new__(cls, *args, **kwargs) -> object:
         if cls is Singleton:
             raise TypeError("Cannot instantiate base singleton class.")
         if not hasattr(cls, "_singleton_instance"):
@@ -88,9 +88,8 @@ class Multiton (object):
     is only executed once for each instance.
     """
     _multiton_instances: Dict[str, Self]  # <-- cls
-    _multiton_init_method: MethodType  # <-- cls
+    _multiton_init_method: Union[MethodType, FunctionType]  # <-- cls
     _multiton_initialized: bool  # <-- instance
-    instance_name: str  # <-- instance
 
     def __new__(cls, *args, instance_name: str = DEFAULT, **kwargs) -> Self:
         if cls is Multiton:
@@ -180,7 +179,8 @@ class AbsoluteAtomic (Singleton, Atomic):
 
     This is a singleton class, which means there will be only one instance of this class, and it will share the counter.
     """
-    __init__ = Atomic.__init__
+    def __init__(self, max_value: int = -1) -> None:
+        Atomic.__init__(self, max_value=max_value)
 
 
 class MultitonAtomic (Multiton, Atomic):
@@ -189,4 +189,5 @@ class MultitonAtomic (Multiton, Atomic):
 
     This is a multiton class, which means that each instance of this class will have its own counter.
     """
-    __init__ = Atomic.__init__
+    def __init__(self, max_value: int = -1, instance_name: str = DEFAULT, **kwargs) -> None:
+        Atomic.__init__(self, max_value=max_value)
